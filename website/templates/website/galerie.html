@@ -1,0 +1,170 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container text-center">
+
+        <h1 class="display-5 fw-bold text-primary">
+            Galerie
+        </h1>
+
+        <p class="lead text-muted mt-3">
+            Découvrez une sélection de nos produits et de nos réalisations.
+            Laissez-vous inspirer pour votre prochain projet.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= GALERIE ================= -->
+
+<section class="section-padding">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for produit in produits %}
+
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="gallery-card">
+
+                    <img src="{{ produit.image.url }}"
+                         alt="{{ produit.nom }}"
+                         class="gallery-image">
+
+                    <div class="p-3">
+
+                        <h5 class="fw-bold text-primary">
+                            {{ produit.nom }}
+                        </h5>
+
+                        <p class="text-muted">
+                            {{ produit.description|truncatewords:15 }}
+                        </p>
+
+                        <p class="mb-3">
+                            <strong>Catégorie :</strong>
+                            {{ produit.categorie.nom }}
+                        </p>
+
+                        {% if produit.format %}
+                        <p class="mb-3">
+                            <strong>Format :</strong>
+                            {{ produit.format }}
+                        </p>
+                        {% endif %}
+
+                        <a href="https://wa.me/221779936083?text=Bonjour,%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20{{ produit.nom }}"
+                           target="_blank"
+                           class="btn btn-warning w-100">
+
+                            <i class="fab fa-whatsapp"></i>
+                            Commander
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+
+                <h4 class="text-muted">
+                    Aucun produit disponible.
+                </h4>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SHOWROOM ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <img src="{% static 'images/hero.jpg' %}"
+                     class="img-fluid rounded shadow"
+                     alt="Showroom">
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <h2 class="fw-bold text-primary mb-4">
+                    Notre Showroom
+                </h2>
+
+                <p class="lead">
+                    Venez découvrir notre vaste collection de carreaux,
+                    sanitaires, peintures et robinetterie dans notre showroom.
+                </p>
+
+                <p>
+                    Nous vous accompagnons dans le choix des matériaux
+                    les mieux adaptés à votre maison, appartement,
+                    bureau ou chantier.
+                </p>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-3">
+                        <i class="fa-solid fa-circle-check text-warning"></i>
+                        Produits de qualité supérieure
+                    </li>
+
+                    <li class="mb-3">
+                        <i class="fa-solid fa-circle-check text-warning"></i>
+                        Conseils personnalisés
+                    </li>
+
+                    <li class="mb-3">
+                        <i class="fa-solid fa-circle-check text-warning"></i>
+                        Prix compétitifs
+                    </li>
+
+                    <li class="mb-3">
+                        <i class="fa-solid fa-circle-check text-warning"></i>
+                        Livraison rapide
+                    </li>
+
+                </ul>
+
+                <a href="{% url 'contact' %}"
+                   class="btn btn-warning btn-lg">
+
+                    Visiter notre showroom
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

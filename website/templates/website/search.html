@@ -1,0 +1,65 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<div class="container py-5">
+
+    {% if query %}
+        <h3>Résultats pour : "{{ query }}"</h3>
+    {% else %}
+        <h3>Rechercher un produit</h3>
+    {% endif %}
+
+    <div class="row g-4 mt-3">
+
+        {% for produit in produits %}
+
+        <div class="col-12 col-sm-6 col-lg-3">
+
+            <div class="category-card">
+
+                <img src="{{ produit.image.url }}" class="category-image">
+
+                <div class="content">
+
+                    <h5>{{ produit.nom }}</h5>
+
+                    <p class="text-muted">
+                        {{ produit.description|truncatewords:10 }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center mt-5">
+
+            {% if query %}
+                <h5 class="text-muted">
+                    Aucun produit trouvé pour "{{ query }}"
+                </h5>
+            {% else %}
+                <h5 class="text-muted">
+                    Commencez une recherche
+                </h5>
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- 🔙 Bouton retour -->
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">
+            Retour à l'accueil
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

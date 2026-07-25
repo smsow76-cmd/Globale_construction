@@ -1,0 +1,16 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<div class="container text-center py-5">
+
+<h1 class="text-success">✔ Achat validé avec succès</h1>
+
+<p>Merci pour votre commande. Nous vous contacterons très bientôt.</p>
+
+<a href="{% url 'home' %}" class="btn btn-primary mt-3">
+    Retour à l'accueil
+</a>
+
+</div>
+
+{% endblock %}

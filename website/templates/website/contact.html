@@ -1,0 +1,226 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+
+<section class="bg-dark text-white py-5">
+
+    <div class="container text-center">
+
+        <h1 class="display-4 fw-bold">
+            Contactez-nous
+        </h1>
+
+        <p class="lead mt-3">
+            Notre équipe est à votre écoute pour tous vos projets de construction,
+            de rénovation et d'aménagement.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= INFOS ================= -->
+
+<section class="section-padding">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+
+                <div class="category-card h-100">
+
+                    <h3 class="mb-4 text-primary">
+                        Nos coordonnées
+                    </h3>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot text-warning"></i>
+                        <strong> Adresse</strong><br>
+                        Fadia Cité Hamo 2<br>
+                        Sur la Corniche<br>
+                        Villa N°60<br>
+                        Dakar - Sénégal
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <i class="fa-solid fa-phone text-warning"></i>
+                        <strong> Téléphones</strong><br>
+
+                        77 636 72 39<br>
+                        77 993 60 83<br>
+                        70 847 18 82
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <i class="fa-solid fa-envelope text-warning"></i>
+                        <strong> Email</strong><br>
+
+                        contact@globalconstruction.sn
+                    </p>
+
+                    <hr>
+
+                    <p>
+
+                        <i class="fa-solid fa-clock text-warning"></i>
+
+                        <strong> Horaires</strong><br>
+
+                        Lundi - Samedi<br>
+
+                        08h00 - 18h30
+
+                    </p>
+
+                    <a href="https://wa.me/221779936083"
+                       class="btn btn-success w-100 mt-3">
+
+                        <i class="fab fa-whatsapp"></i>
+
+                        Discuter sur WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Formulaire -->
+
+            <div class="col-lg-8">
+
+                <div class="category-card">
+
+                    <h3 class="text-primary mb-4">
+
+                        Envoyez-nous un message
+
+                    </h3>
+
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success text-center">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+
+
+
+                    <form method="POST" action="{% url 'contact' %}">
+    {% csrf_token %}
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <input type="text" name="nom" class="form-control" placeholder="Nom complet" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Adresse e-mail" required>
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <input type="text" name="telephone" class="form-control" placeholder="Téléphone">
+    </div>
+
+    <div class="mb-3">
+        <textarea name="message" rows="6" class="form-control" placeholder="Votre message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-warning btn-lg">
+        Envoyer le message
+    </button>
+</form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SHOWROOM ================= -->
+
+<section class="section-padding bg-light">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <img src="{% static 'images/showroom.jpg' %}"
+                     class="img-fluid rounded shadow"
+                     alt="Showroom">
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <h2 class="text-primary fw-bold">
+
+                    Venez visiter notre showroom
+
+                </h2>
+
+                <p class="mt-4">
+
+                    Découvrez nos collections de carreaux, sanitaires,
+                    peintures et robinetterie dans un espace moderne.
+
+                </p>
+
+                <p>
+
+                    Nos conseillers vous accompagnent pour choisir les
+                    produits les plus adaptés à votre projet.
+
+                </p>
+
+                <a href="https://wa.me/221779936083"
+                   class="btn btn-warning">
+
+                    Prendre rendez-vous
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= GOOGLE MAP ================= -->
+
+<section>
+
+    <iframe
+        src="https://www.google.com/maps?q=Fadia+Cité+Hamo+2+Dakar&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        loading="lazy">
+    </iframe>
+
+</section>
+
+{% endblock %}

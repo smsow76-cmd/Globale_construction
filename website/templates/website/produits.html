@@ -1,0 +1,128 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+<section class="py-5 bg-light border-bottom">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold display-5 text-primary">
+            Catalogue Produits
+        </h1>
+
+        <p class="text-muted lead mt-3">
+            Découvrez nos meilleurs produits : Carreaux, Sanitaires, Peintures et Robinetterie.
+            Qualité professionnelle au meilleur prix.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<section class="py-3 bg-white sticky-top shadow-sm">
+
+    <div class="container text-center">
+
+        <a href="#" class="btn btn-outline-dark btn-sm m-1">Tous</a>
+        <a href="#" class="btn btn-outline-primary btn-sm m-1">Carreaux</a>
+        <a href="#" class="btn btn-outline-primary btn-sm m-1">Sanitaires</a>
+        <a href="#" class="btn btn-outline-primary btn-sm m-1">Peintures</a>
+        <a href="#" class="btn btn-outline-primary btn-sm m-1">Robinetterie</a>
+
+    </div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for produit in produits %}
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+                <!-- CARD -->
+                <div class="card h-100 border-0 shadow-sm product-card hover-card">
+
+                    <!-- IMAGE -->
+                    <div class="image-box">
+
+                        <img src="{{ produit.image.url }}"
+                             class="product-image"
+                             alt="{{ produit.nom }}">
+
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="card-body">
+
+                        <h6 class="fw-bold text-primary mb-1">
+                            {{ produit.nom }}
+                        </h6>
+
+                        <p class="small text-muted mb-2">
+                            {{ produit.description|truncatewords:10 }}
+                        </p>
+
+                        <p class="mb-1">
+                            <span class="badge bg-secondary">
+                                {{ produit.categorie.nom }}
+                            </span>
+                        </p>
+
+                        <p class="fw-bold text-dark mb-3">
+                            {{ produit.format }}
+                        </p>
+
+                        <a href="https://wa.me/221779936083?text=Bonjour%20je%20veux%20le%20produit%20{{ produit.nom }}"
+                           class="btn btn-success btn-sm w-100">
+
+                            💬 Commander
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOT CTA ================= -->
+<section class="py-5 bg-primary text-white text-center">
+
+    <div class="container">
+
+        <h2 class="fw-bold">
+            Besoin d’un devis rapide ?
+        </h2>
+
+        <p class="mt-2">
+            Contactez-nous sur WhatsApp, réponse immédiate.
+        </p>
+
+        <a href="https://wa.me/221776367239"
+           class="btn btn-light mt-2">
+
+            📞 Contacter maintenant
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

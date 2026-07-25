@@ -1,0 +1,58 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<section class="section-padding">
+<div class="container">
+
+<h2 class="section-title">Votre Panier</h2>
+
+{% if produits %}
+
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Sous-total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for item in produits %}
+        <tr>
+            <td>{{ item.produit.nom }}</td>
+            <td>{{ item.produit.prix }} FCFA</td>
+            <td>{{ item.qty }}</td>
+            <td>{{ item.subtotal }} FCFA</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<h3 class="text-end mt-4">
+    Total : <span class="text-success">{{ total }} FCFA</span>
+</h3>
+
+<div class="text-end mt-3">
+
+    <a href="#" class="btn btn-success btn-lg">
+        Valider la commande
+    </a>
+
+</div>
+
+{% else %}
+
+<h4 class="text-center text-muted">
+    Votre panier est vide
+</h4>
+
+{% endif %}
+
+</div>
+</section>
+
+{% endblock %}

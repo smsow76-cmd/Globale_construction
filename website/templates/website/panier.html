@@ -1,0 +1,71 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<section class="section-padding">
+<div class="container">
+
+    <h2 class="section-title">Votre panier</h2>
+
+    {% if produits %}
+
+    <div class="row g-4">
+
+        {% for item in produits %}
+
+<div class="d-flex justify-content-between align-items-center border p-3 rounded shadow-sm">
+
+    <!-- PRODUIT -->
+    <div>
+        <h5>{{ item.produit.nom }}</h5>
+
+        <p class="text-muted mb-0">
+            Quantité :
+            
+            <!-- ICI TU METS LES BOUTONS -->
+            <a href="{% url 'decrease_qty' item.produit.id %}" class="btn btn-sm btn-secondary">-</a>
+
+            {{ item.qty }}
+
+            <a href="{% url 'increase_qty' item.produit.id %}" class="btn btn-sm btn-secondary">+</a>
+
+        </p>
+    </div>
+
+    <!-- PRIX -->
+    <div class="text-end">
+        <p class="fw-bold">{{ item.subtotal }} FCFA</p>
+    </div>
+
+</div>
+
+{% endfor %}
+
+    </div>
+
+    <hr>
+
+    <!-- TOTAL -->
+    <h4>
+        Total : <span class="text-success">{{ total }} FCFA</span>
+    </h4>
+
+    <!-- VALIDATION -->
+    <a href="{% url 'valider_commande' %}"
+       class="btn btn-success btn-lg w-100 mt-3">
+
+        Valider votre achat
+
+    </a>
+
+    {% else %}
+
+    <h4 class="text-center text-muted">
+        Votre panier est vide
+    </h4>
+
+    {% endif %}
+
+</div>
+</section>
+
+{% endblock %}
