@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z#lh6p!4j5jb4m=kj9l1i4=+)x1c9vi1@u_sr-%*7wk_^q#jf8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "51.91.102.2",
+    "globaleconstructionimmobliere.com",
+    "www.globaleconstructionimmobliere.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition

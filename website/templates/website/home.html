@@ -82,20 +82,18 @@
 
                     <div class="p-2">
 
-                        <h6 class="title">{{ produit.nom|truncatechars:18 }}</h6>
+    <h6 class="title">{{ produit.nom|truncatechars:18 }}</h6>
 
-                        {% if produit.prix_promo and produit.prix_promo < produit.prix %}
+    {% comment %}
+    {% if produit.prix_promo and produit.prix_promo < produit.prix %}
+        <small class="old">{{ produit.prix }} FCFA</small><br>
+        <strong class="new">{{ produit.prix_promo }} FCFA</strong>
+    {% else %}
+        <strong class="new">{{ produit.prix }} FCFA</strong>
+    {% endif %}
+    {% endcomment %}
 
-                            <small class="old">{{ produit.prix }} FCFA</small><br>
-                            <strong class="new">{{ produit.prix_promo }} FCFA</strong>
-
-                        {% else %}
-
-                            <strong class="new">{{ produit.prix }} FCFA</strong>
-
-                        {% endif %}
-
-                    </div>
+</div>
 
                 </div>
 
@@ -358,27 +356,7 @@
                     {{ produit.description|truncatewords:9 }}
                     </p>
 
-                    <div class="price-box mt-2">
-
-                        {% if produit.prix_promo and produit.prix_promo < produit.prix %}
-
-                            <span class="text-muted text-decoration-line-through">
-                                {{ produit.prix }} FCFA
-                            </span>
-
-                            <span class="text-danger fw-bold ms-2">
-                                {{ produit.prix_promo }} FCFA
-                            </span>
-
-                        {% else %}
-
-                            <span class="fw-bold text-primary">
-                                {{ produit.prix }} FCFA
-                            </span>
-
-                        {% endif %}
-
-                    </div>
+                    <!-- Prix masqué -->
 
                     <a href="{% url 'produit_detail' produit.id %}"
                         class="btn btn-outline-primary w-100 mt-2">
